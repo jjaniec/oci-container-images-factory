@@ -1,0 +1,7 @@
+[*.sh]
+indent_size = 4
+indent_style = tab
+
+[./**/Dockerfile]
+indent_size = 4
+indent_style = tab

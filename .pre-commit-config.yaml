@@ -1,0 +1,39 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+fail_fast: false
+default_stages: [commit, push]
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+  - id: check-yaml
+  - id: check-executables-have-shebangs
+  - id: check-ast
+  - id: fix-encoding-pragma
+  - id: requirements-txt-fixer
+  # - id: no-commit-to-branch
+  #   args: [--branch, master]
+
+- repo: https://github.com/jumanjihouse/pre-commit-hooks
+  rev: 2.1.5
+  hooks:
+  - id: git-check
+  - id: script-must-have-extension
+  # - id: shellcheck
+  # - id: shfmt
+  - id: forbid-binary
+
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.7.2.1
+  hooks:
+  - id: shellcheck
+
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  rev: v1.1.10
+  hooks:
+  - id: remove-crlf
+
+- repo: https://github.com/hadolint/hadolint
+  rev: v2.7.0
+  hooks:
+  - id: hadolint
