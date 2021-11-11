@@ -2,6 +2,8 @@ ARG		IMG_VERSION
 
 FROM	jess/img:${IMG_VERSION}
 
-RUN		echo 'alias docker="img"' >> /home/user/.ashrc
+USER	root
 
-ENV		ENV=/home/user/.ashrc
+RUN		ln -s /usr/bin/img /usr/local/bin/docker
+
+USER	user

@@ -10,6 +10,8 @@ fi;
 CONTAINER_ID=$(docker run \
 	-d \
 	--entrypoint=sh \
+	--security-opt seccomp=unconfined \
+	--security-opt apparmor=unconfined \
 	"${1}" \
 	-c 'sleep infinity'
 )
@@ -17,7 +19,8 @@ CONTAINER_ID=$(docker run \
 echo "CONTAINER_ID: ${CONTAINER_ID}"
 
 COMMANDS=(
-	"img --help"
+	"img pull alpine"
+	"docker pull alpine"
 )
 
 for c in "${COMMANDS[@]}";
@@ -33,5 +36,6 @@ do
 	fi;
 done;
 
-rm stdout.log stderr.log || true
+[ "${KEEP_LOGS}" = "true" ] || rm stdout.log stderr.log || true
+docker kill "${CONTAINER_ID}"
 exit 0

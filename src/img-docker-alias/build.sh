@@ -3,7 +3,7 @@
 set -o nounset
 set -o pipefail
 # set -o errexit
-set -o xtrace
+# set -o xtrace
 
 if [ "${#}" -ne 2 ]; then
 	echo "Usage: ${0} <image_repository> <img_version>"
@@ -11,14 +11,18 @@ if [ "${#}" -ne 2 ]; then
 fi;
 
 ROOT_DIR_LOCATION_="${ROOT_DIR_LOCATION:-$(pwd)/../..}"
-TESTS_DIR_LOCATION="${ROOT_DIR_LOCATION_}/tests"
 UTILS_DIR_LOCATION="${ROOT_DIR_LOCATION_}/utils"
 
-IMAGE_REPOSITORY="${1}"
+export REPOSITORY_DESCRIPTION="official jess/img image w/ a docker symlink, built everyday by github-actions"
+REPOSITORY_README_TPL_PATH="$(pwd)/README-containers.md.tpl"
+REPOSITORY_README_PATH="$(pwd)/README-containers.md"
+
+export IMAGE_REPOSITORY="${1}"
 IMG_VERSION="${2}"
 
 IMAGE_NAME=$(echo "${IMAGE_REPOSITORY}" | rev | cut -d '/' -f 1 | rev)
-IMAGE_TAG="${IMG_VERSION}"
+export IMAGE_NAME
+export IMAGE_TAG="${IMG_VERSION}"
 
 "${UTILS_DIR_LOCATION}/dockerhub-image-exists.sh" "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
 r=$?
@@ -40,7 +44,7 @@ docker build \
 
 docker tag "${IMAGE_REPOSITORY}:${IMAGE_TAG}" "${IMAGE_REPOSITORY}:latest"
 
-"${TESTS_DIR_LOCATION}/${IMAGE_NAME}/test.sh" "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+make -C "${ROOT_DIR_LOCATION_}" img-docker-alias-tests
 r=$?
 
 if [ $r -eq 0 ];
@@ -53,3 +57,6 @@ fi;
 
 docker push "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
 docker push "${IMAGE_REPOSITORY}:latest"
+
+DOCKERFILE_CONTENT="$(cat ./Dockerfile)" envsubst < "${REPOSITORY_README_TPL_PATH}" > "${REPOSITORY_README_PATH}"
+"${UTILS_DIR_LOCATION}/dockerhub-set-repository-metadata.sh" "${IMAGE_REPOSITORY}" "${REPOSITORY_README_PATH}" "${REPOSITORY_DESCRIPTION}"

@@ -8,17 +8,16 @@ then
 fi;
 
 CONTAINER_ID=$(docker run \
-	-td \
-	"${1}"
+	-d \
+	--entrypoint=sh \
+	"${1}" \
+	-c 'sleep infinity'
 )
 
 echo "CONTAINER_ID: ${CONTAINER_ID}"
 
 COMMANDS=(
-	"argocd --help"
-	"helm --help"
-	"helm secrets --help"
-	"sops --help"
+	"airflow --help"
 )
 
 for c in "${COMMANDS[@]}";
@@ -35,4 +34,5 @@ do
 done;
 
 rm stdout.log stderr.log || true
+docker kill "${CONTAINER_ID}"
 exit 0

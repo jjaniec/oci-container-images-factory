@@ -1,4 +1,4 @@
-name: build-img-docker-alias
+name: build-airflow-exporter
 
 on:
   push:
@@ -21,13 +21,13 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
+          username: jjaniec
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         uses: actions/checkout@v2
       -
         name: Build and push latest
-        run: make img-docker-alias
+        run: make airflow-exporter
         env:
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_PASS: ${{ secrets.DOCKERHUB_PASS }}
