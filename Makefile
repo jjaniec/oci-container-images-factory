@@ -11,6 +11,7 @@ airflow-exporter:
 	cd src/airflow-exporter && ./build-latest.sh "${REPOSITORY_ROOT}/airflow-exporter"
 airflow-exporter-tests:
 	./tests/airflow-exporter/check_path.sh "jjaniec/airflow-exporter:latest"
+	./tests/airflow-exporter/metrics_exists.sh "jjaniec/airflow-exporter:latest"
 
 img-docker-alias:
 	cd src/img-docker-alias && ./build-latest.sh "${REPOSITORY_ROOT}/img-docker-alias"
