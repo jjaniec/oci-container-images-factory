@@ -24,7 +24,7 @@ repos:
   - id: forbid-binary
 
 - repo: https://github.com/shellcheck-py/shellcheck-py
-  rev: v0.7.2.1
+  rev: v0.8.0.1
   hooks:
   - id: shellcheck
 
@@ -34,6 +34,6 @@ repos:
   - id: remove-crlf
 
 - repo: https://github.com/AleksaC/hadolint-py
-  rev: v1.19.0
+  rev: v2.8.0
   hooks:
   - id: hadolint
