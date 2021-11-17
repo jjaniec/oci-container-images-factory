@@ -1,9 +1,10 @@
-name: build-argocd-helm-secrets-sops
+name: build-jenkins-inbound-agent-img-awscli
 
 on:
   push:
     branches:
       - 'master'
+      - 'dev'
   schedule:
     - cron: '0 0 * * *'
 
@@ -27,7 +28,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build and push latest
-        run: make argocd-helm-secrets-sops
+        run: make jenkins-inbound-agent-img-awscli
         env:
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_PASS: ${{ secrets.DOCKERHUB_PASS }}
