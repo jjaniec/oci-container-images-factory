@@ -21,8 +21,8 @@ echo "CONTAINER_ID: ${CONTAINER_ID}"
 COMMANDS=(
 	"airflow db init"
 	'airflow webserver & export JOB_PID=$! && echo "${JOB_PID}" && sleep 20 && ls "/proc/${JOB_PID}"; r=$?; kill "${JOB_PID}"; exit ${r}'
-	'airflow webserver & export JOB_PID=$! && sleep 2 && [ $(curl -v -o -I -L -s -w "%{http_code}" http://localhost:8080) -eq 200 ]; r=$?; kill "${JOB_PID}"; exit ${r}'
-	'airflow webserver & export JOB_PID=$! && sleep 2 && [ $(curl -v -o -I -L -s -w "%{http_code}" http://localhost:8080/admin/metrics) -eq 200 ]; r=$?; kill "${JOB_PID}"; exit ${r}'
+	'airflow webserver & export JOB_PID=$! && sleep 30 && [ $(curl -v -o -I -L -s -w "%{http_code}" http://localhost:8080) -eq 200 ]; r=$?; kill "${JOB_PID}"; exit ${r}'
+	'airflow webserver & export JOB_PID=$! && sleep 30 && [ $(curl -v -o -I -L -s -w "%{http_code}" http://localhost:8080/admin/metrics) -eq 200 ]; r=$?; kill "${JOB_PID}"; exit ${r}'
 )
 
 r=0
