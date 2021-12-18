@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status:
-set -e
+set -o pipefail
 
 if [ -z "${1}" ]; then
 	echo "Usage: ${0} image[:tag]" >&2
@@ -42,4 +41,15 @@ TOKEN="$(
 )"
 
 # Check if the given image tag exists:
-curl -fsSLI -o /dev/null -H "Authorization: Bearer $TOKEN" "$REGISTRY_URL"
+curl -fsSLI -o /dev/null -H "Authorization: Bearer $TOKEN" "$REGISTRY_URL" 2>/dev/null
+r=$?
+if [ ${r} -eq 0 ];
+then
+	echo "Image with tag ${IMAGE_TAG} already exists"
+	exit 0
+elif [ ${r} -ne 22 ];
+then
+	echo "Unexpected error checking for image with tag ${IMAGE_TAG}"
+	exit 2
+fi;
+exit 1

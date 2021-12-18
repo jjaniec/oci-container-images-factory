@@ -7,6 +7,11 @@ argocd-helm-secrets-sops:
 argocd-helm-secrets-sops-tests:
 	./tests/argocd-helm-secrets-sops/check_path.sh "jjaniec/argocd-helm-secrets-sops:latest"
 
+asdf:
+	cd src/asdf && ./build-latest.sh "${REPOSITORY_ROOT}/asdf"
+asdf-tests:
+	./tests/asdf/check_path.sh "jjaniec/asdf:latest"
+
 airflow-exporter:
 	cd src/airflow-exporter && ./build-latest.sh "${REPOSITORY_ROOT}/airflow-exporter"
 airflow-exporter-tests:

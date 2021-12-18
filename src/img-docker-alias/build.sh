@@ -24,17 +24,11 @@ IMAGE_NAME=$(echo "${IMAGE_REPOSITORY}" | rev | cut -d '/' -f 1 | rev)
 export IMAGE_NAME
 export IMAGE_TAG="${IMG_VERSION}"
 
+# Check if image with tag already exists on remote
+set +o errexit
 "${UTILS_DIR_LOCATION}/dockerhub-image-exists.sh" "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
-r=$?
-if [ ${r} -eq 0 ];
-then
-	echo "Image with tag ${IMAGE_TAG} already exists, exiting"
-	exit 0
-elif [ ${r} -ne 22 ];
-then
-	echo "Unexpected error checking for image with tag ${IMAGE_TAG}, exiting"
-	exit 1
-fi;
+[ $? -ne 1 ] && exit 0
+set -o errexit
 
 docker build \
 	-t "${IMAGE_REPOSITORY}:${IMAGE_TAG}" \

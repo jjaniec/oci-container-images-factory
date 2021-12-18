@@ -23,10 +23,10 @@ repos:
   # - id: shfmt
   - id: forbid-binary
 
-- repo: https://github.com/shellcheck-py/shellcheck-py
-  rev: v0.7.2.1
-  hooks:
-  - id: shellcheck
+    #- repo: https://github.com/shellcheck-py/shellcheck-py
+  #  rev: v0.7.2.1
+    #  hooks:
+    #  - id: shellcheck
 
 - repo: https://github.com/Lucas-C/pre-commit-hooks
   rev: v1.1.10

@@ -20,5 +20,4 @@ then
 fi
 
 LATEST_VERSION=$(echo "${VERSIONS}" | sort --version-sort | tail -n 1)
-
 echo "${LATEST_VERSION}"
