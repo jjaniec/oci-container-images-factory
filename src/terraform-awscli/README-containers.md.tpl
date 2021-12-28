@@ -7,7 +7,7 @@ ${REPOSITORY_DESCRIPTION}
 
 [Github actions workflow](https://github.com/jjaniec/oci-container-images-factory/actions/workflows/${IMAGE_NAME}.yml)
 
-The tag is formatted as follows: `[AWSCLI_VERSION]`
+The tag is formatted as follows: `[TERRAFORM_VERSION]-[AWSCLI_VERSION]`
 
 ---
 
@@ -16,7 +16,8 @@ The tag is formatted as follows: `[AWSCLI_VERSION]`
 [This image](https://github.com/jjaniec/oci-container-images-factory/tree/master/src/${IMAGE_NAME})
 
 terraform: [github](https://github.com/hashicorp/terraform)
-awscli: [github](https://github.com/amazon/aws-cli [hub.docker.com](https://hub.docker.com/r/amazon/aws-cli)
+
+awscli: [github](https://github.com/amazon/aws-cli) [hub.docker.com](https://hub.docker.com/r/amazon/aws-cli)
 
 ---
 

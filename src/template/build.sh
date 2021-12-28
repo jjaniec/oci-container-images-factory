@@ -27,7 +27,7 @@ export IMAGE_TAG="${${__TEMPLATE_TOOL_NAME_CAPS__}_VERSION}"
 # Check if image with tag already exists on remote
 set +o errexit
 "${UTILS_DIR_LOCATION}/dockerhub-image-exists.sh" "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
-[ $? -ne 1 ] && exit 1
+[ $? -ne 1 ] && exit 0
 set -o errexit
 
 docker build \

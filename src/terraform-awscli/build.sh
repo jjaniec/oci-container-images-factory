@@ -3,7 +3,7 @@
 set -o nounset
 set -o pipefail
 set -o errexit
-set -o xtrace
+# set -o xtrace
 
 if [ "${#}" -ne 3 ]; then
 	echo "Usage: ${0} <image_repository> <awscli_version> <terraform_version>"
@@ -28,14 +28,14 @@ export IMAGE_TAG="${TERRAFORM_VERSION}-${AWSCLI_VERSION}"
 # Check if image with tag already exists on remote
 set +o errexit
 "${UTILS_DIR_LOCATION}/dockerhub-image-exists.sh" "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
-[ $? -ne 1 ] && exit 1
+[ $? -ne 1 ] && exit 0
 set -o errexit
 
 TERRAFORM_PATH="./terraform"
 TERRAFORM_VERSION_FMT="$(echo ${TERRAFORM_VERSION} | tr -d 'v')"
 wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION_FMT}/terraform_${TERRAFORM_VERSION_FMT}_linux_amd64.zip"
 unzip "terraform_${TERRAFORM_VERSION_FMT}_linux_amd64.zip"
-mv "./terraform" "${TERRAFORM_PATH}"
+ls "${TERRAFORM_PATH}" > /dev/null
 chmod 0755 "${TERRAFORM_PATH}"
 
 docker build \
