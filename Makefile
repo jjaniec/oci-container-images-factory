@@ -30,6 +30,12 @@ jenkins-inbound-agent-img-awscli-tests:
 	./tests/jenkins-inbound-agent-img-awscli/check_path.sh "jjaniec/jenkins-inbound-agent-img-awscli:latest"
 	./tests/jenkins-inbound-agent-img-awscli/pull_image.sh "jjaniec/jenkins-inbound-agent-img-awscli:latest"
 
+terraform-awscli:
+	cd src/terraform-awscli && ./build-latest.sh "${REPOSITORY_ROOT}/terraform-awscli"
+terraform-awscli-tests:
+	./tests/terraform-awscli/check_path.sh "jjaniec/terraform-awscli:latest"
+	./tests/terraform-awscli/check_terraform_init.sh "jjaniec/terraform-awscli:latest"
+
 clean:
 	rm -rf ./**/helm-secrets.tar.gz.* ./**/*.tar.gz* ./**/sops*
 

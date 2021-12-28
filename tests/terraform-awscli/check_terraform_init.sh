@@ -17,7 +17,8 @@ CONTAINER_ID=$(docker run \
 echo "CONTAINER_ID: ${CONTAINER_ID}"
 
 COMMANDS=(
-	"${__TEMPLATE_TOOL_NAME__} version"
+	"git -C /tmp clone https://github.com/cloudposse/terraform-aws-ec2-instance.git"
+	"terraform -chdir=/tmp/terraform-aws-ec2-instance init"
 )
 
 for c in "${COMMANDS[@]}";

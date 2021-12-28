@@ -17,7 +17,8 @@ CONTAINER_ID=$(docker run \
 echo "CONTAINER_ID: ${CONTAINER_ID}"
 
 COMMANDS=(
-	"${__TEMPLATE_TOOL_NAME__} version"
+	"aws --version"
+	"terraform version"
 )
 
 for c in "${COMMANDS[@]}";
