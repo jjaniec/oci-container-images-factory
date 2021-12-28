@@ -23,10 +23,10 @@ repos:
   # - id: shfmt
   - id: forbid-binary
 
-    #- repo: https://github.com/shellcheck-py/shellcheck-py
-  #  rev: v0.7.2.1
-    #  hooks:
-    #  - id: shellcheck
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.8.0.1
+  hooks:
+  - id: shellcheck
 
 - repo: https://github.com/Lucas-C/pre-commit-hooks
   rev: v1.1.10
@@ -34,6 +34,6 @@ repos:
   - id: remove-crlf
 
 - repo: https://github.com/AleksaC/hadolint-py
-  rev: v1.19.0
+  rev: v2.8.0
   hooks:
   - id: hadolint
