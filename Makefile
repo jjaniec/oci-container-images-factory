@@ -36,6 +36,11 @@ terraform-awscli-tests:
 	./tests/terraform-awscli/check_path.sh "jjaniec/terraform-awscli:latest"
 	./tests/terraform-awscli/check_terraform_init.sh "jjaniec/terraform-awscli:latest"
 
+evans:
+	cd src/evans && ./build-latest.sh "${REPOSITORY_ROOT}/evans"
+evans-tests:
+	./tests/evans/check_path.sh "jjaniec/evans:latest"
+
 clean:
 	rm -rf ./**/helm-secrets.tar.gz.* ./**/*.tar.gz* ./**/sops*
 

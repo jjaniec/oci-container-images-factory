@@ -34,4 +34,4 @@ do
 done;
 
 chmod +x "${ROOT_DIR_LOCATION}/src/${TEMPLATE_IMAGE_NAME}/"{build-latest.sh,build.sh}
-chmod +x "${ROOT_DIR_LOCATION}/tests/${TEMPLATE_IMAGE_NAME}/check-path.sh"
+chmod +x "${ROOT_DIR_LOCATION}/tests/${TEMPLATE_IMAGE_NAME}/check_path.sh"
