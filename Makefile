@@ -1,22 +1,29 @@
 REPOSITORY_ROOT =	jjaniec
 
 all: argocd-helm-secrets-sops airflow-exporter img-docker-alias jenkins-inbound-agent-img-awscli
+patch-images: argocd-helm-secrets-sops-patch asdf-patch airflow-exporter-patch
 
 argocd-helm-secrets-sops:
 	cd src/argocd-helm-secrets-sops && ./build-latest.sh "${REPOSITORY_ROOT}/argocd-helm-secrets-sops"
 argocd-helm-secrets-sops-tests:
 	./tests/argocd-helm-secrets-sops/check_path.sh "jjaniec/argocd-helm-secrets-sops:latest"
+argocd-helm-secrets-sops-patch:
+	./patch-images.sh src/argocd-helm-secrets-sops jjaniec/argocd-helm-secrets-sops argocd-helm-secrets-sops-tests
 
 asdf:
 	cd src/asdf && ./build-latest.sh "${REPOSITORY_ROOT}/asdf"
 asdf-tests:
 	./tests/asdf/check_path.sh "jjaniec/asdf:latest"
+asdf-patch:
+	./patch-images.sh src/asdf jjaniec/asdf asdf-tests
 
 airflow-exporter:
 	cd src/airflow-exporter && ./build-latest.sh "${REPOSITORY_ROOT}/airflow-exporter"
 airflow-exporter-tests:
 	./tests/airflow-exporter/check_path.sh "jjaniec/airflow-exporter:latest"
 	./tests/airflow-exporter/metrics_exists.sh "jjaniec/airflow-exporter:latest"
+airflow-exporter-patch:
+	./patch-images.sh src/airflow-exporter jjaniec/airflow-exporter airflow-exporter-tests
 
 img-docker-alias:
 	cd src/img-docker-alias && ./build-latest.sh "${REPOSITORY_ROOT}/img-docker-alias"
