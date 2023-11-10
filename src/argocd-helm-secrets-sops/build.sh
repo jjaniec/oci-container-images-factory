@@ -35,8 +35,8 @@ set -o errexit
 SOPS_PATH="./sops"
 HELM_SECRETS_PATH="./helm-secrets.tar.gz"
 
-wget "https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux"
-mv "sops-${SOPS_VERSION}.linux" "${SOPS_PATH}"
+wget "https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64"
+mv "sops-${SOPS_VERSION}.linux.amd64" "${SOPS_PATH}"
 chmod 0755 "${SOPS_PATH}"
 
 wget "https://github.com/jkroepke/helm-secrets/releases/download/${HELM_SECRETS_VERSION}/helm-secrets.tar.gz"
