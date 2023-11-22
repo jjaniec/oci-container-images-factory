@@ -3,7 +3,9 @@
 set -o nounset
 set -o pipefail
 # set -o errexit
-# set -o xtrace
+set -o xtrace
+
+set -o verbose
 
 IMAGE_REPOSITORY="${1}"
 

@@ -1,0 +1,191 @@
+target_repository_prefix: docker.io/jjaniec
+
+defaults:
+  patch_latest_releases_count: 5
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+repositories:
+# - name: airflow-exporter
+#   source_type: dockerhub
+#   source_repository: jjaniec/airflow-exporter
+#   patch_latest_releases_count: 2
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: false
+
+- name: mlflow
+  source_type: ghcr
+  source_repository: mlflow/mlflow
+  patch_latest_releases_count: 5
+  release_releases_tag_grep_regexp: '^v\d+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: false
+  generate_ots_dockerhub_readme: true
+
+# - name: consul
+#   source_type: dockerhub
+#   source_repository: library/consul
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: vault
+#   source_type: dockerhub
+#   source_repository: library/vault
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+- name: prometheus
+  source_type: dockerhub
+  source_repository: prom/prometheus
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: grafana
+  source_type: dockerhub
+  source_repository: grafana/grafana
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+# - name: curl
+#   source_type: dockerhub
+#   source_repository: curlimages/curl
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: envoy
+#   source_type: dockerhub
+#   source_repository: envoyproxy/envoy
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^v\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: etcd
+#   source_type: dockerhub
+#   source_repository: bitnami/etcd
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: haproxy
+#   source_type: dockerhub
+#   source_repository: library/haproxy
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d++$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: nats
+#   source_type: dockerhub
+#   source_repository: library/nats
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: nginx
+#   source_type: dockerhub
+#   source_repository: library/nginx
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d++$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: rabbitmq
+#   source_type: dockerhub
+#   source_repository: library/rabbitmq
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+# - name: redis
+#   source_type: dockerhub
+#   source_repository: library/redis
+#   patch_latest_releases_count: 10
+#   release_releases_tag_grep_regexp: '^\d+\.\d+$'
+#   additional_fixed_tags: []
+#   patch_latest_tag: true
+#   generate_ots_dockerhub_readme: true
+
+- name: traefik
+  source_type: dockerhub
+  source_repository: library/traefik
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^v\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: zenml-server
+  source_type: dockerhub
+  source_repository: zenmldocker/zenml-server
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: zenml
+  source_type: dockerhub
+  source_repository: zenmldocker/zenml
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^\d+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: jenkins
+  source_type: dockerhub
+  source_repository: jenkins/jenkins
+  patch_latest_releases_count: 10
+  release_releases_tag_grep_regexp: '^\d+\.\d+\.[2-9]$'
+  additional_fixed_tags:
+  - latest-jdk11
+  - slim
+  - slim-jdk11
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: terraform
+  source_type: dockerhub
+  source_repository: hashicorp/terraform
+  patch_latest_releases_count: 50
+  release_releases_tag_grep_regexp: '^[1-9]+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true
+
+- name: label-studio
+  source_type: dockerhub
+  source_repository: heartexlabs/label-studio
+  patch_latest_releases_count: 20
+  release_releases_tag_grep_regexp: '^[1-9]+\.\d+\.\d+$'
+  additional_fixed_tags: []
+  patch_latest_tag: true
+  generate_ots_dockerhub_readme: true

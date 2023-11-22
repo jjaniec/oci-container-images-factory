@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build and push latest
-        run: make patch-images
+        run: cd patching && ./patch-images.sh
         env:
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_PASS: ${{ secrets.DOCKERHUB_PASS }}
